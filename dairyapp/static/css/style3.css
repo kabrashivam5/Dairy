@@ -1,0 +1,39 @@
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1300px;
+}
+
+.logo {
+    position: fixed;
+    margin: 0% 10%;
+    border: 2px solid black;
+}
+
+h1 {
+    color: rgb(46, 46, 223);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.content2 {
+    margin: 1% 0%;
+    width: 90%;
+    padding: 2px 2px;
+}
+
+body {
+    background: rgb(248, 207, 207);
+    background-size: cover;
+}
+
+.input-group input-group-sm mb-3 {
+    padding: 10px;
+}
+
+.input-group mb-3 {
+    width: 50%;
+}
+
+.container{
+    border: 2px solid black;
+    margin: 0% 0%;
+}

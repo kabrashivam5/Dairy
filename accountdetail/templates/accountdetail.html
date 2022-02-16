@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Account Details Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #DDD;
+      }
+      tr:hover {background-color: #D6EEEE;}
+      </style>
+</head>
+
+<body style="background-color: rgb(93, 79, 79); color: darkolivegreen;">
+    <div class="container-fluid" style="background-color: white;">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class='py-6 text-lg text-md-center font-extrabold'>Accounts</h1>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <form action="/accountdetail" method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="input">Code</label>
+                            <input type="text" class="form-control" name="code" id="inputEmail4" placeholder="Enter the Code">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Item Code</label>
+                            <input class="form-control" id="inputEmail4" name="itemcode" placeholder="Item Code">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Barcode</label>
+                            <input class="form-control" id="inputEmail4" name="barcode" placeholder="Bar Code">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">HSN Code</label>
+                            <select id="inputState" class="form-control" name="hsn">
+                                <option selected></option>
+                                <option>12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Name</label>
+                        <input type="text" class="form-control" name="name" id="inputAddress">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Group</label>
+                            <input class="form-control" id="inputEmail4" name="groupname">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Qty/Crate</label>
+                            <input type="text" class="form-control" name="amtqty" id="inputEmail4">
+                        </div>
+                    </div>
+                    <!-- <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="packaging" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Packaging Case</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="trading" id="exampleCheck2">
+                                <label class="form-check-label" for="exampleCheck2">Trading</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="consumable" id="exampleCheck3">
+                                <label class="form-check-label" for="exampleCheck3">Consumable</label>
+                            </div>
+                        </div>
+
+                    </div> -->
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Packaging Unit</label>
+                            <input class="form-control" name="packagingunit" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Loose Unit</label>
+                            <input class="form-control" name="loose" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Conv. Factor</label>
+                            <input class="form-control" name="conv" id="inputEmail4" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Crates/Ltr</label>
+                            <input class="form-control" name="crates" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">WholeSale Rt</label>
+                            <input class="form-control" name="wholesale" id="inputEmail4" >
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Retail Rt</label>
+                            <input class="form-control" name="retail" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Retail Rt1</label>
+                            <input class="form-control" name="retailrt" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Sales Rt2</label>
+                            <input class="form-control" name="sales" id="inputEmail4" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Tax</label>
+                            <input class="form-control" name="tax" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Tax on tax</label>
+                            <input class="form-control" name="taxontax" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Additional Tax</label>
+                            <input class="form-control" name="additionaltax" id="inputEmail4" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Select Sales Group</label>
+                            <select id="inputState" name="salesgroup" class="form-control">
+                                <option selected></option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Select Purchase Group </label>
+                            <select id="inputState" name="purchase" class="form-control">
+                                <option selected></option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Reorder stock</label>
+                            <input class="form-control" name="reorderstock" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">OP Stock</label>
+                            <input class="form-control" name="opstock" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Max Rate</label>
+                            <input class="form-control" name="maxrate" id="inputEmail4" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Recorder Level</label>
+                            <input class="form-control" name="recorder" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Loose Stock</label>
+                            <input class="form-control" name="loosestock" id="inputEmail4" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">OP Rate</label>
+                            <input class="form-control" name="oprate" id="inputEmail4" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">OP Amount</label>
+                            <input class="form-control" name="opamount" id="inputEmail4">
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn btn-secondary m-md-3 w-25" name="add" style="color: black;" >Add</button>
+                        <button type="submit" class="btn btn-success m-md-3 w-25"   name="save" style="color: black;" >Save</button>
+                        <button type="submit" class="btn btn-outline-dark m-md-3 w-25" name="update" style="color: black;" >Modify</button>
+                        <button type="submit" class="btn btn-warning  m-md-3 w-25" name="delete" style="color: black;" >Delete</button>
+                        <button type="submit" class="btn btn-danger  m-md-3 w-25"  name="exit" style="color: black;" >Exit</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-md-8">
+                <!-- Farmer's List -->
+                <div class="form-group">
+                    <div class="table-responsive my-2 col-md-12">
+                        <table class="table table-striped table-sm space-x-2" style='color: darkolivegreen;'>
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Item Code</th>
+                                    <th>Bar Code</th>
+                                    <th>HSN Code</th>
+                                    <th>Name</th>
+                                    <th>Group</th>
+                                    <th>Qty/Crate</th>
+                                    <th>Packaging Unit</th>
+                                    <th>Loose Unit</th>
+                                    <th>Conversion Factor</th>
+                                    <th>Crates/Litre</th>
+                                    <th>WholeSale Rt</th>
+                                    <th>Retail Rt</th>
+                                    <th>Retail Rt1</th>
+                                    <th>Sales Rt2</th>
+                                    <th>Tax</th>
+                                    <th>Tax on Tax</th>
+                                    <th>Additional Tax</th>
+                                    <th>Sales Group</th>
+                                    <th>Purchase Group</th>
+                                    <th>Reorder Stock</th>
+                                    <th>OP Stock</th>
+                                    <th>Max Rate</th>
+                                    <th>Recorder Level</th>
+                                    <th>Loose Stock</th>
+                                    <th>OP Rate</th>
+                                    <th>OP Amount</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in abc %}
+                                <tr>
+                                    {% for j in i %}
+                                    <td>{{j}}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
