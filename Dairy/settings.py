@@ -10,9 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import imp
 from pathlib import Path
 from django.contrib import messages
 import os
+import dj_database_url
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$ch!xe!90#ko(#oz-9pbml=by-3(=sm+#46vc+z2y=5y+&4by&'
 # SECRET_KEY=os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["localhost","diary132.herokuapp.com/"]
+ALLOWED_HOSTS = ["localhost","diary132.herokuapp.com"]
 
 
 # Application definition
@@ -134,3 +137,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #manual
 
 STATIC_ROOT=BASE_DIR / 'static'
+django_heroku.settings(locals())
