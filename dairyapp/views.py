@@ -5,7 +5,7 @@ from dairyapp.database import Connection
 from django.contrib import messages
 # Create your views here.
 
-# web: gunicorn Dairy.wsgi --log-file -
+# web gunicorn Dairy.wsgi:application --log-file -
 def index(request):
     db=Connection()
     x,y=db.checkUser()

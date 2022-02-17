@@ -1,1 +1,1 @@
-web gunicorn Dairy.wsgi:application --log-file -
+web: python server.py
